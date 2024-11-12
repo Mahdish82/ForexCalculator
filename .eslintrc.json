@@ -1,4 +1,7 @@
 {
     "extends": "react-app",
-    "react/prop-types": "error"
+    "react/prop-types": "error",
+    "rules": {
+      "constructor-super": "off"
+    }
   }
