@@ -1,0 +1,11 @@
+.btn{
+    width: 122px;
+    height: 44px;
+    background-color: rgba(46,45,45,85%);
+    font-size: 14px;
+    font-weight: bolder;
+    color: rgba(255,255,255,90%);
+    border-radius: 15px;
+    border: none;
+    box-shadow:2px 4px rgba(90, 88, 88, 0.445);
+}

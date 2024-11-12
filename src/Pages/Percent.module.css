@@ -1,0 +1,46 @@
+.container {
+    background-color: rgba(77, 209, 81, 0.67);
+    min-height: 100vh;
+    padding: 36px;
+}
+
+.btn {
+    width: 98px;
+    height: 33px;
+    background-color: rgba(255, 255, 255, 0.92);
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+.btnContainer {
+    padding-top: 104.6px;
+    display: flex;
+    justify-content: center;
+}
+
+.btnBox {
+    width: 196px;
+    height: 33px;
+
+}
+.Rbtn{    
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-left: 1px solid rgb(146, 153, 146);
+}
+.Lbtn{    
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+:global(.active){
+    background-color: rgba(58,71,58, 99%);
+    color: rgba(255,255,255,93%);
+}
+
+.inputContainer{
+    padding-top: 36px;
+    justify-content: space-around
+    
+}
