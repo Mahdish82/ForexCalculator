@@ -4,7 +4,8 @@ import Button from "../Component/Button";
 import Header from "../Component/Header";
 import style from "./Percent.module.css";
 import { useState } from "react";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
+import NumberConvertor from "../Component/Number";
 
 // eslint-disable-next-line react/prop-types
 export default function Percent({ isPercentActive, isPipActive }) {
@@ -15,19 +16,26 @@ export default function Percent({ isPercentActive, isPipActive }) {
   const [pipValue, setPipValue] = useState("");
 
   function calculation() {
-    // Corrected formula for lot calculation
-    const final = (assets * (riskPrc / 100)) / ((price * (stPrc / 100)) * pipValue);
+    const convertedPrice = NumberConvertor(price);
+    const convertedStPrc = NumberConvertor(stPrc);
+    const convertedRiskPrc = NumberConvertor(riskPrc);
+    const convertedAssets = NumberConvertor(assets);
+    const convertedPipValue = NumberConvertor(pipValue);
+    const final =
+      ((convertedAssets || assets) * ((convertedRiskPrc || riskPrc) / 100)) /
+      ((convertedPrice || price) *
+        ((convertedStPrc || stPrc) / 100) *
+        (convertedPipValue || pipValue));
     Swal.fire({
-      title: 'LOT',
+      title: "LOT",
       text: `Your Lot is: ${final}`,
-      icon: 'success',
+      icon: "success",
     });
   }
 
   return (
     <div className={style.container}>
       <Header />
-
       <div className={style.btnContainer}>
         <div className={`${style.btnBox}`}>
           <Link to={"/percent"}>
@@ -46,7 +54,6 @@ export default function Percent({ isPercentActive, isPipActive }) {
           </Link>
         </div>
       </div>
-
       <div className={`row ${style.inputContainer}`}>
         <div className="col-3">
           <Box label={"موجودی کل"} value={setAssets} />
@@ -60,7 +67,11 @@ export default function Percent({ isPercentActive, isPipActive }) {
           <Box label={"ارزش هر پیپ"} value={setPipValue} />
         </div>
         <div className="col-3">
-          <Box label={"استاپ لاس براساس درصد"} labelWidth={"160px"} value={setStPrc} />
+          <Box
+            label={"استاپ لاس براساس درصد"}
+            labelWidth={"160px"}
+            value={setStPrc}
+          />
         </div>
       </div>
       <div className={`row ${style.inputContainer}`}>

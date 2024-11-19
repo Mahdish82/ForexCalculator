@@ -6,17 +6,23 @@ import Header from "../Component/Header";
 import style from "./Percent.module.css";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import NumberConvertor from "../Component/Number";
+
 
 // eslint-disable-next-line react/prop-types
 export default function Pip({ isPercentActive, isPipActive }) {
-  // const [price, setPerice] = useState("");
   const [pipSize, setPipSize] = useState("")
   const [riskPrc, setRiskPrc] = useState("");
   const [assets, setAssets] = useState("");
   const [pipValue, setPipValue] = useState("");
 
   function calculation(){
-    const final = (assets * (riskPrc / 100)) / (pipSize * pipValue);
+    const convertedStPrc = NumberConvertor(pipSize);
+    const convertedRiskPrc = NumberConvertor(riskPrc);
+    const convertedAssets = NumberConvertor(assets);
+    const convertedPipValue = NumberConvertor(pipValue);
+
+    const final = ((convertedAssets || assets) * ((convertedRiskPrc || riskPrc) / 100)) / ((convertedStPrc || pipSize) * (convertedPipValue || pipValue));
     Swal.fire({
       title : 'LOT',
       text:`Your Lot is: ${final}`,
@@ -56,7 +62,7 @@ export default function Pip({ isPercentActive, isPipActive }) {
           <Box label={"ارزش هر پیپ"} value={setPipValue}/>
         </di>
         <di className="col-3">
-          <Box label={"استاپ لاس براساس پیپ"} labelWidth={"160px"} value={setPipSize}/>
+          <Box label={"استاپ لاس براساس پیپ"} labelWidth={"150px"} value={setPipSize}/>
         </di>
       </div>
       <div className={`row ${style.inputContainer}`}>
