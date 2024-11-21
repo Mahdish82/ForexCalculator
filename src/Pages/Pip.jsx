@@ -8,27 +8,27 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import NumberConvertor from "../Component/Number";
 
-
 // eslint-disable-next-line react/prop-types
 export default function Pip({ isPercentActive, isPipActive }) {
-  const [pipSize, setPipSize] = useState("")
+  const [pipSize, setPipSize] = useState("");
   const [riskPrc, setRiskPrc] = useState("");
   const [assets, setAssets] = useState("");
   const [pipValue, setPipValue] = useState("");
 
-  function calculation(){
+  function calculation() {
     const convertedStPrc = NumberConvertor(pipSize);
     const convertedRiskPrc = NumberConvertor(riskPrc);
     const convertedAssets = NumberConvertor(assets);
     const convertedPipValue = NumberConvertor(pipValue);
 
-    const final = ((convertedAssets || assets) * ((convertedRiskPrc || riskPrc) / 100)) / ((convertedStPrc || pipSize) * (convertedPipValue || pipValue));
+    const final =
+      ((convertedAssets || assets) * ((convertedRiskPrc || riskPrc) / 100)) /
+      ((convertedStPrc || pipSize) * (convertedPipValue || pipValue));
     Swal.fire({
-      title : 'LOT',
-      text:`Your Lot is: ${final}`,
-      icon:'success'
-    })
-
+      title: "LOT",
+      text: `Your Lot is: ${final}`,
+      icon: "success",
+    });
   }
 
   return (
@@ -50,25 +50,29 @@ export default function Pip({ isPercentActive, isPipActive }) {
         </div>
       </div>
       <div className={`row ${style.inputContainer}`}>
-        <di className="col-3">
-          <Box label={"موجودی کل"} value={setAssets}/>
-        </di>
-        <di className="col-3">
-          <Box label={"مقدار ریسک"} value={setRiskPrc}/>
-        </di>
+        <div className="col-3">
+          <Box label={"موجودی کل"} value={setAssets} />
+        </div>
+        <div className="col-3">
+          <Box label={"مقدار ریسک"} value={setRiskPrc} />
+        </div>
       </div>
       <div className={`row ${style.inputContainer}`}>
-        <di className="col-3">
-          <Box label={"ارزش هر پیپ"} value={setPipValue}/>
-        </di>
-        <di className="col-3">
-          <Box label={"استاپ لاس براساس پیپ"} labelWidth={"150px"} value={setPipSize}/>
-        </di>
+        <div className="col-3">
+          <Box label={"ارزش هر پیپ"} value={setPipValue} />
+        </div>
+        <div className="col-3">
+          <Box
+            label={"استاپ لاس براساس پیپ"}
+            labelWidth={"150px"}
+            value={setPipSize}
+          />
+        </div>
       </div>
       <div className={`row ${style.inputContainer}`}>
-        <di className="col-4">
-          <Button calculation={calculation}/>
-        </di>
+        <div className="col-4">
+          <Button calculation={calculation} />
+        </div>
       </div>
     </div>
   );

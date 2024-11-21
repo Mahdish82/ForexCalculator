@@ -1,10 +1,7 @@
 import Swal from "sweetalert2";
 
 export default function NumberConvertor(num) {
-  
   function convertor() {
-    // console.log(num);
-
     const arr = [];
     num
       .toString()
@@ -48,7 +45,6 @@ export default function NumberConvertor(num) {
         }
       });
     return parseFloat(arr.join(""));
-
   }
   return convertor();
 }
